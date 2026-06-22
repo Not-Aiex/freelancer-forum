@@ -58,14 +58,25 @@ function FreelancerCards() {
   return cards;
 }
 
+function AverageRate() {
+  const card = document.createElement("div");
+  card.classList.add("average");
+  card.innerHTML = `
+    <p>The average rate is: $${avgRate}</p>
+    `;
+  return card;
+}
+
 function render() {
   const $app = document.querySelector("#app");
   $app.innerHTML = `
     <h1>Freelancers and rates</h1>
+    <AverageRate></AverageRate>
     <FreelancerCards></FreelancerCards>
   `;
   $app
     .querySelector("FreelancerCards")
     .replaceWith(FreelancerCards(freelancers));
+  $app.querySelector("AverageRate").replaceWith(AverageRate());
 }
 render();
