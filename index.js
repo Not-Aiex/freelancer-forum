@@ -39,5 +39,33 @@ function averageRate() {
 }
 
 let avgRate = averageRate();
-console.log(freelancers);
-console.log(avgRate);
+
+function FreelancerCard(freelancer) {
+  const card = document.createElement("div");
+  card.classList.add("table");
+  card.innerHTML = `
+    <p>${freelancer.name}: ${freelancer.occupation}</p>
+    <p>$${freelancer.rate}
+    `;
+  return card;
+}
+
+function FreelancerCards() {
+  const cards = document.createElement("div");
+  cards.classList.add("tables");
+  const allFreelancers = freelancers.map(FreelancerCard);
+  cards.replaceChildren(...allFreelancers);
+  return cards;
+}
+
+function render() {
+  const $app = document.querySelector("#app");
+  $app.innerHTML = `
+    <h1>Freelancers and rates</h1>
+    <FreelancerCards></FreelancerCards>
+  `;
+  $app
+    .querySelector("FreelancerCards")
+    .replaceWith(FreelancerCards(freelancers));
+}
+render();
