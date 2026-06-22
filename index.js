@@ -61,7 +61,7 @@ function FreelancerCards() {
 function AverageRate() {
   const card = document.createElement("div");
   card.classList.add("average");
-  if (avgRate <= 110) {
+  if (avgRate <= 100) {
     card.style.color = "green";
   } else {
     card.style.color = "red";
